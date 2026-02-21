@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="#profile-section">
                 <i class="fa-brands fa-instagram me-2 fs-3"></i>
                 <span>Reels Gallery</span>
             </a>
@@ -49,14 +49,26 @@
     <main class="container gallery-container">
 
         <!-- Profile Header Section -->
-        <div class="text-center profile-section">
-            <div class="profile-img-container mx-auto mb-3">
-                <!-- Using a placeholder for profile pic, replace src with actual image -->
-                <img src="Profile.png" alt="Profile Picture" class="profile-img">
+        <div class="text-center profile-section" id="profile-section">
+            <div class="profile-img-container mx-auto mb-3 stories-ring active">
+                <div class="profile-img-inner">
+                    <!-- Using a placeholder for profile pic, replace src with actual image -->
+                    <img src="Profile.png" alt="Profile Picture" class="profile-img">
+                </div>
             </div>
             <div class="username-wrapper mt-2 mb-3">
                 <a href="https://instagram.com/iam_ambalavanan" target="_blank" class="instagram-link">
-                    <i class="fa-brands fa-instagram me-1"></i>@iam_ambalavanan
+                    <i class="fa-brands fa-instagram me-1"></i>
+                    <span>@iam_ambalavanan</span>
+                    <svg class="verified-badge ms-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20"
+                        height="20" viewBox="0 0 48 48" aria-label="Verified" role="img">
+                        <polygon fill="#42a5f5"
+                            points="29.62,3 33.053,8.308 39.367,8.624 39.686,14.937 44.997,18.367 42.116,23.995 45,29.62 39.692,33.053 39.376,39.367 33.063,39.686 29.633,44.997 24.005,42.116 18.38,45 14.947,39.692 8.633,39.376 8.314,33.063 3.003,29.633 5.884,24.005 3,18.38 8.308,14.947 8.624,8.633 14.937,8.314 18.367,3.003 23.995,5.884">
+                        </polygon>
+                        <polygon fill="#fff"
+                            points="21.396,31.255 14.899,24.76 17.021,22.639 21.428,27.046 30.996,17.772 33.084,19.926">
+                        </polygon>
+                    </svg>
                 </a>
             </div>
             <div class="stats-wrapper mb-4">
