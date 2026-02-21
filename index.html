@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reels Gallery</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ambient Background -->
+    <div class="bg-blobs">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div id="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fa-brands fa-instagram me-2 fs-3"></i>
+                <span>Reels Gallery</span>
+            </a>
+
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-sun" id="theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Gallery Content -->
+    <main class="container gallery-container">
+
+        <!-- Profile Header Section -->
+        <div class="text-center profile-section">
+            <div class="profile-img-container mx-auto mb-3">
+                <!-- Using a placeholder for profile pic, replace src with actual image -->
+                <img src="Profile.png" alt="Profile Picture" class="profile-img">
+            </div>
+            <div class="username-wrapper mt-2 mb-3">
+                <a href="https://instagram.com/iam_ambalavanan" target="_blank" class="instagram-link">
+                    <i class="fa-brands fa-instagram me-1"></i>@iam_ambalavanan
+                </a>
+            </div>
+            <div class="stats-wrapper mb-4">
+                <span class="badge rounded-pill stats-badge px-3 py-2 fw-semibold" id="total-posts-badge"><i
+                        class="fa-solid fa-video me-2"></i>0 Posts</span>
+            </div>
+            <h2 class="section-title mt-3">My Reels Gallery</h2>
+            <p class="subtitle mt-3">Explore our curated collection of aesthetic and engaging moments.</p>
+        </div>
+
+
+
+        <!-- Portrait Videos (9:16) -->
+        <div class="video-section d-none" id="portrait-section">
+            <h3 class="mb-4 text-start fw-semibold"
+                style="color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px;">Portrait Moments
+            </h3>
+            <div class="masonry-grid masonry-portrait mb-5" id="portrait-grid">
+                <!-- Reels cards dynamically injected here -->
+            </div>
+        </div>
+
+        <!-- Landscape Videos (16:9) -->
+        <div class="video-section d-none" id="landscape-section">
+            <h3 class="mb-4 text-start fw-semibold"
+                style="color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px;">Landscape
+                Experiences</h3>
+            <div class="masonry-grid masonry-landscape" id="landscape-grid">
+                <!-- Reels cards dynamically injected here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="text-center">
+        <div class="container">
+            <h5 class="mb-3 fw-semibold">Connect With Me</h5>
+            <div class="social-links mb-4">
+                <a href="https://instagram.com/iam_ambalavanan" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/ambalavanan01" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <p class="text-muted small mb-0">&copy; 2026 Reels Gallery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Video Popup Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="position: absolute; right: 15px; top: 15px; z-index: 10; filter: invert(1);"></button>
+                    <video id="modalVideo" controls autoplay playsinline loop
+                        style="width: 100%; border-radius: 8px;"></video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Application Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
