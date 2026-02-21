@@ -302,22 +302,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600);
     }, 1500);
 
-    // Scroll Reveal Animation Logic
-    const revealCards = () => {
-        const cards = document.querySelectorAll('.reel-card');
-        const windowHeight = window.innerHeight;
-        const revealPoint = 75;
+    // Scroll Reveal Animation Logic via Intersection Observer
+    const cardRevealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: "0px 0px -75px 0px"
+    });
 
+    const revealCards = () => {
+        const cards = document.querySelectorAll('.reel-card:not(.reveal)');
         cards.forEach(card => {
+            cardRevealObserver.observe(card);
+            // Fallback for elements already in view during load
             const cardTop = card.getBoundingClientRect().top;
-            if (cardTop < windowHeight - revealPoint) {
+            if (cardTop < window.innerHeight - 75) {
                 card.classList.add("reveal");
+                cardRevealObserver.unobserve(card);
             }
         });
     };
-
-    window.addEventListener("scroll", revealCards);
-    window.addEventListener("resize", revealCards);
 
     // Stop modal video playback when modal is closed
     const videoModalEl = document.getElementById('videoModal');

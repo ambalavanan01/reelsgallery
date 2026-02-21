@@ -20,8 +20,16 @@ body {
     font-family: 'Outfit', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
     padding-top: 76px;
     /* Offset for fixed navbar */
+}
+
+/* Improve global scrolling smoothness */
+html,
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Background gradient blobs */
@@ -32,6 +40,9 @@ body {
     z-index: -1;
     opacity: 0.15;
     animation: float 20s infinite ease-in-out;
+    will-change: transform;
+    transform: translateZ(0);
+    pointer-events: none;
 }
 
 .bg-blob-1 {
@@ -73,6 +84,8 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .navbar-brand {
@@ -318,9 +331,11 @@ footer {
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
+    will-change: transform, opacity;
+    contain: content;
 }
 
 .reel-card.reveal {
@@ -520,4 +535,26 @@ footer {
     background-size: 1.2rem;
     width: 2rem;
     height: 2rem;
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+    .bg-blob {
+        /* Completely remove heavy blurs and animations on mobile */
+        display: none !important;
+    }
+
+    .navbar {
+        /* Remove expensive backdrop filters and use solid background */
+        background: var(--bg-color) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .username-wrapper {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: var(--card-bg) !important;
+        box-shadow: none !important;
+    }
 }
